@@ -3,8 +3,6 @@ import math
 import os
 
 
-from matplotlib.pyplot import step
-
 passC = 0
 
 while True:
