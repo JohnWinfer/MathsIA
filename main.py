@@ -4,6 +4,7 @@ from distutils.command.sdist import sdist
 import math
 import os
 
+os.system('cls' if os.name == 'nt' else 'clear')
 
 passC = 0
 
@@ -59,11 +60,11 @@ while True:
         passC = 2
         print("Please insert Y values seperated by commas:")
         userInput = input()
-        y1 = userInput.split(",")
+        y = userInput.split(",")
         os.system('cls' if os.name == 'nt' else 'clear')
-        for i in range(0, len(y1)):
+        for i in range(0, len(y)):
             try:
-                y1[i] = float(y1[i])
+                y[i] = float(y[i])
             except:
                 print("Invalid Input")
                 passC = 1
@@ -73,17 +74,15 @@ while True:
         passC = 1
         print("Please insert X values seperated by commas:")
         userInput = input()
-        x1 = userInput.split(",")
+        x = userInput.split(",")
         os.system('cls' if os.name == 'nt' else 'clear')
-        for i in range(0, len(x1)):
+        for i in range(0, len(x)):
             try:
-                x1[i] = float(x1[i])
+                x[i] = float(x[i])
             except:
                 print("Invalid Input")
                 passC = 0
     
-    x = [1,3,5,7,9,11,13,15]
-    y = [60,35.2,16.7,10.93,7.12,4.45,2.05,0]
     aMatrix = []
     xMatrix = []
     
@@ -141,7 +140,7 @@ while True:
         area2D = 0.5 * (sLength*((a*math.pow(lBound, 2) + b * lBound + c) + (a*math.pow(uBound, 2) + b * uBound + c) + (2 * num)))
         
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("Quadratic Equation is:", round(a, 5),"x^2",round(b, 5),"x",round(c, 5))
+        print("Quadratic Equation is:", round(a, 5),"x^2 +",round(b, 5),"x +",round(c, 5))
         print ("2D area under the shape is:", round(area2D,5), "m^2")
 
         dist = dist * sLength
@@ -152,7 +151,7 @@ while True:
         segment = num - remover
         angle = 360 / angle
         area3D = angle * segment
-        print("3D volume is:", round(area3D, 5), "m^3")
+        print("Revolved 3D volume is:", round(area3D, 5), "m^3")
 
         passC = 0
         asas = input()
