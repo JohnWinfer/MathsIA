@@ -12,10 +12,10 @@ while True:
 
     if passC == 5:
         print("Please insert 3D step width:")
-        Width3D = input()
+        width3D = input()
         os.system('cls' if os.name == 'nt' else 'clear')
         try:
-            Width3D = float(Width3D)
+            width3D = float(width3D)
             error = False
         except:
             print("Invalid Input")
@@ -145,10 +145,10 @@ while True:
         print ("2D area under the shape is:", round(area2D,5), "m^2")
 
         dist = dist * sLength
-        remover = (((dist * highestValue) - area2D) * Width3D) / 2
-        height = math.sqrt(math.pow(dist, 2) - math.pow(Width3D / 2, 2))
-        angle = (math.asin((Width3D / 2) * (math.sin(90) / dist))) * 20
-        num = ((Width3D * height) / 2) * highestValue
+        remover = (((dist * highestValue) - area2D) * width3D) / 2
+        height = math.sqrt(math.pow(dist, 2) - math.pow(width3D / 2, 2))
+        angle = (math.asin((width3D / 2) * (math.sin(90) / dist))) * 20
+        num = ((width3D * height) / 2) * highestValue
         segment = num - remover
         angle = 360 / angle
         area3D = angle * segment
