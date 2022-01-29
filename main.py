@@ -1,25 +1,36 @@
 
+from cmath import sqrt
+from distutils.command.sdist import sdist
 import math
 import os
 
-
-from matplotlib.pyplot import step
 
 passC = 0
 
 while True:
     error = True
 
+    if passC == 5:
+        print("Please insert 3D step width:")
+        Width3D = input()
+        os.system('cls' if os.name == 'nt' else 'clear')
+        try:
+            Width3D = float(Width3D)
+            error = False
+        except:
+            print("Invalid Input")
+            error = True
+
     if passC == 4:
+        passC = 5
         print("Please insert step length:")
         sLength = input()
         os.system('cls' if os.name == 'nt' else 'clear')
         try:
             sLength = float(sLength)
-            error = False
         except:
+            passC = 4
             print("Invalid Input")
-            error = True
 
     
     if passC == 3:
@@ -122,20 +133,27 @@ while True:
         
         dist1 = dist + sLength
         num = 0
-        
         xn = lBound + sLength
-        print(xn)
-        dist = dist - 2
-        for i in range(dist):
+        for i in range(dist - 2):
             num = num + a*math.pow(xn, 2) + b * xn + c
             xn = xn + sLength
+        highestValue = max(a*math.pow(lBound, 2) + b * lBound + c, a*math.pow(uBound, 2) + b * uBound + c)
         area2D = 0.5 * (sLength*((a*math.pow(lBound, 2) + b * lBound + c) + (a*math.pow(uBound, 2) + b * uBound + c) + (2 * num)))
         
         os.system('cls' if os.name == 'nt' else 'clear')
         print("Quadratic Equation is:", round(a, 5),"x^2",round(b, 5),"x",round(c, 5))
-        print ("2D area under the shape is:", round(area2D,5))
-        
-        
+        print ("2D area under the shape is:", round(area2D,5), "m^2")
+
+        dist = dist * sLength
+        remover = (((dist * highestValue) - area2D) * Width3D) / 2
+        height = math.sqrt(math.pow(dist, 2) - math.pow(Width3D / 2, 2))
+        angle = (math.asin((Width3D / 2) * (math.sin(90) / dist))) * 20
+        num = ((Width3D * height) / 2) * highestValue
+        segment = num - remover
+        angle = 360 / angle
+        area3D = angle * segment
+        print("3D volume is:", round(area3D, 5), "m^3")
+
         passC = 0
         asas = input()
         os.system('cls' if os.name == 'nt' else 'clear')
