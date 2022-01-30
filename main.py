@@ -68,7 +68,7 @@ while True:
                 passC = 1
 
     
-    if passC == 0 :
+    if passC == 0 : 
         passC = 1
         print("Please insert X values seperated by commas:")
         userInput = input()
@@ -80,14 +80,17 @@ while True:
             except:
                 print("Invalid Input")
                 passC = 0
-    
+   
+#---------------------------------------------------------------------------------------------------------------------
+#Approximating the quadratic curve 
+
     aMatrix = []
     xMatrix = []
     
-    if error == False:
+    if error == False: #If all inputs are valid, proceed with calculations
         num = 0
 
-        for expon in range(5):
+        for expon in range(5): #Create the X matrix
             num = 0
             for i in x:
                 num = num + math.pow(i, expon)
@@ -97,7 +100,7 @@ while True:
         num1 = 0
         count = 0
 
-        for i in x:
+        for i in x: #Create Y matrix
             num = num + math.pow(i, 2) * y[count] 
             num1 = num1 + i * y[count]
             count = count + 1
@@ -106,15 +109,18 @@ while True:
 
         num = 0
         for i in range(2):
-            xMatrix.append(round(xMatrix[i + 2] - (xMatrix[1] / xMatrix[2]) * xMatrix[i + 3], 10))
+            xMatrix.append(round(xMatrix[i + 2] - (xMatrix[1] / xMatrix[2]) * xMatrix[i + 3], 10)) #Calculate Second Row
 
         aMatrix[1] = round(aMatrix[1] - (xMatrix[1] / xMatrix[2]) * aMatrix[0], 10)
                 
 
-
-        a = (round((aMatrix[2] - (xMatrix[0]/xMatrix[2]) * aMatrix[0]) - ((xMatrix[1] - (xMatrix[0] / xMatrix[2]) * xMatrix[3]) / xMatrix[5]) * aMatrix[1], 10)) / round((xMatrix[2] - (xMatrix[0]/xMatrix[2]) * xMatrix[4]) - ((xMatrix[1] - (xMatrix[0] / xMatrix[2]) * xMatrix[3]) / xMatrix[5]) * xMatrix[6], 10) 
+        #Find values using substition
+        a = (round((aMatrix[2] - (xMatrix[0]/xMatrix[2]) * aMatrix[0]) - ((xMatrix[1] - (xMatrix[0] / xMatrix[2]) * xMatrix[3]) / xMatrix[5]) * aMatrix[1], 10)) / round((xMatrix[2] - (xMatrix[0]/xMatrix[2]) * xMatrix[4]) - ((xMatrix[1] - (xMatrix[0] / xMatrix[2]) * xMatrix[3]) / xMatrix[5]) * xMatrix[6], 10) #Calculate 3rd Row 
         b = (aMatrix[1] - a * xMatrix[6]) / xMatrix[5]
         c = (aMatrix[0] - (xMatrix[4] * a) - (xMatrix[3] * b)) / xMatrix[2]
+        
+#---------------------------------------------------------------------------------------------------------------------
+#2D Area:
 
         dist = (uBound - lBound) / sLength
 
@@ -141,8 +147,11 @@ while True:
         print("Quadratic Equation is:", round(a, 5),"x^2 +",round(b, 5),"x +",round(c, 5))
         print ("2D area under the shape is:", round(area2D,5), "m^2")
 
+#---------------------------------------------------------------------------------------------------------------------
+#3D Area:
+
         dist = dist * sLength
-        remover = (((dist * highestValue) - area2D) * width3D) / 2
+        remover = (((dist * highestValue) - area2D) * width3D) / 2 
         height = math.sqrt(math.pow(dist, 2) - math.pow(width3D / 2, 2))
         angle = (math.asin((width3D / 2) * (math.sin(90) / dist))) * 2
         num = ((width3D * height) / 2) * highestValue
