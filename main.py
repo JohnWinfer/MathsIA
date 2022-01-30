@@ -144,7 +144,7 @@ while True:
         dist = dist * sLength
         remover = (((dist * highestValue) - area2D) * width3D) / 2
         height = math.sqrt(math.pow(dist, 2) - math.pow(width3D / 2, 2))
-        angle = (math.asin((width3D / 2) * (math.sin(90) / dist))) * 20
+        angle = (math.asin((width3D / 2) * (math.sin(90) / dist))) * 2
         num = ((width3D * height) / 2) * highestValue
         segment = num - remover
         angle = 360 / angle
