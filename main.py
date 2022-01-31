@@ -150,20 +150,21 @@ while True:
 #---------------------------------------------------------------------------------------------------------------------
 #3D Area:
 
-        dist = dist * sLength
-        remover = (((dist * highestValue) - area2D) * width3D) / 2 
-        height = math.sqrt(math.pow(dist, 2) - math.pow(width3D / 2, 2))
-        angle = (math.asin((width3D / 2) * (math.sin(90) / dist))) * 2
-        num = ((width3D * height) / 2) * highestValue
-        segment = num - remover
-        angle = 360 / angle
-        area3D = angle * segment
-        print("Revolved 3D volume is:", round(area3D, 5), "m^3")
+#This code does not work as intended, working on a new solution.
+
+        #dist = dist * sLength
+        #remover = (((dist * highestValue) - area2D) * width3D) / 2 
+        #height = math.sqrt(math.pow(dist, 2) - math.pow(width3D / 2, 2))
+        #angle = (math.asin((width3D / 2) * (math.sin(90) / dist))) * 2
+        #num = ((width3D * height) / 2) * highestValue
+        #segment = num - remover
+        #angle = 360 / angle
+        #area3D = angle * segment
+        #print("Revolved 3D volume is:", round(area3D, 5), "m^3")
 
         passC = 0
         asas = input()
         os.system('cls' if os.name == 'nt' else 'clear')
-
 
 
 
