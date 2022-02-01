@@ -1,5 +1,4 @@
-#Unfinished with a lot of problems
-
+#Unfinished but we're makeing progress
 
 import math
 import os
@@ -16,7 +15,7 @@ c = -1.33
 
 Area2D = 387.71588
 lbound = 1
-ubound = 4
+ubound = 15
 highestValue = 79
 
 num = highestValue / Height3D
@@ -26,41 +25,45 @@ bruteforce = True
 xValue = lbound
 yValues3D = []
 xValues3D = []
-testXValue = -99999999999
+testyValue = None
 while bruteforce == True:
     if round(xValue, 3) == ubound:
         bruteforce = False
         break
     yValue = a * math.pow(xValue, 2) + b * xValue + c
-    yValue = round(yValue, 2)
-    if yValue % stepHeight == 0 and yValue == testyValue:
+    yValue = round(yValue, 3)
+    if yValue % stepHeight == 0 and yValue != testyValue:
         yValues3D.append(yValue)
         xValues3D.append(xValue)
     xValue = round(xValue + .0001, 10)
-    testyValue = yValue
+    testyValue = yValue #This loop is so stupid but it works
+
+testList = []
+duplicates = []
+for i in yValues3D:
+    if (i in testList):
+        duplicates.append(i)
+    else:
+        testList.append(i)
+
 
 yValue = 0
 
-duplicates = [j for n, j in enumerate(xValues3D) if j in xValues3D[:n]]
-
-print(duplicates)
 
 for i in range(num):
     yValue + stepHeight
     if yValue is not yValues3D:
         dist = ubound - lbound
-    #elif 
-    #else:
-
+    else:
+        dist = xValue - lbound
+    height = math.sqrt(math.pow((dist), 2) - math.pow(width3D / 2, 2))
 
 
 print(xValues3D)
 print(yValues3D)
-
-#for i in range(num):
-    
+print(duplicates)
 
 
-    #height = math.sqrt(math.pow((ubound - lbound) - (i * stepHeight), 2) - math.pow(width3D / 2, 2))
-
-    
+#Notes:
+# duplicates get subtraceted from each other
+# if yvalue is not on list, take lbound and upound 
