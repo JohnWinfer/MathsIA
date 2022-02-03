@@ -1,4 +1,4 @@
-#Unfinished but we're makeing progress
+#Unfinished but we're making progress
 
 import math
 import os
